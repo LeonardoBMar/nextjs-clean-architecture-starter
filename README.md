@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Clean Architecture Starter
 
-## Getting Started
+Este é um template básico focado em **boas práticas**, organização de código e escalabilidade, utilizando as tecnologias mais recentes do ecossistema React.
 
-First, run the development server:
+## 🚀 Tecnologias
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **UI Architecture:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+
+## 📂 Estrutura do Projeto
+
+A estrutura foi pensada para separar responsabilidades e facilitar a manutenção:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── app/          # Rotas e Páginas (App Router)
+├── components/   # Componentes reutilizáveis de UI
+├── services/     # Lógica de negócios e chamadas à API
+├── types/        # Definições de Tipos TypeScript compartilhadas
+├── lib/          # Utilitários e configurações globais
+└── public/       # Arquivos estáticos
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Principais Conceitos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Services Pattern:** Toda a comunicação externa (APIs) é centralizada na pasta `services`, evitando chamadas `fetch` soltas dentro dos componentes.
+2.  **Server Components:** Prioridade para renderização no servidor para melhor performance e SEO.
+3.  **Strict Typing:** Uso intensivo de interfaces e tipos para garantir segurança no código.
+4.  **UI Components:** Biblioteca de componentes reutilizáveis em `components/ui`, seguindo padrões acessíveis e consistentes (inspirado em Radix/Shadcn).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Componentes Disponíveis
 
-## Learn More
+- **Button:** Com variantes (primary, destructive, outline, ghost) e suporte a loading.
+- **Input:** Input estilizado com estados de erro.
+- **Card:** Primitivos para construção de cards (Header, Title, Content, Footer).
+- **Skeleton:** Loading placeholders animados.
+- **Utils (lib/utils.ts):** Função `cn` para merge seguro de classes Tailwind.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Como Rodar
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  Clone o repositório:
+    ```bash
+    git clone https://github.com/LeonardoBMar/nextjs-clean-architecture-starter.git
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  Instale as dependências:
+    ```bash
+    npm install
+    # ou
+    yarn
+    # ou
+    pnpm install
+    ```
 
-## Deploy on Vercel
+3.  Rode o servidor de desenvolvimento:
+    ```bash
+    npm run dev
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4.  Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
